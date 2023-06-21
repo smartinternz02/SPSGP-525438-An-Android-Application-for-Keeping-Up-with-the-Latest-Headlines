@@ -153,7 +153,7 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                         )
                         //onLoginSuccess()
                     } else {
-                        error = "Invalid username or password"
+                        error = "Invalid username OR password"
                     }
                 } else {
                     error = "Please fill all fields"
