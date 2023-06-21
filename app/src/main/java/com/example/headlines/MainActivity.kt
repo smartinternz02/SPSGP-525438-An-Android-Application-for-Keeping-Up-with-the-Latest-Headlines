@@ -17,6 +17,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             HeadlinesTheme {
+                //Hi I am Nikhil
                 //chaitanya
                 //second change
                 // A surface container using the 'background' color from the theme
