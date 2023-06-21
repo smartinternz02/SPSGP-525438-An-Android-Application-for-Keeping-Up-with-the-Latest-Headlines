@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.example.headlines
 
 import android.content.Context
@@ -13,6 +15,16 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Divider
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,8 +36,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
-import com.example.newsheadlines.ui.theme.NewsHeadlinesTheme
+import com.example.headlines.MainActivity
+
 
 class LoginActivity : ComponentActivity() {
     private lateinit var databaseHelper: UserDatabaseHelper
@@ -38,6 +50,8 @@ class LoginActivity : ComponentActivity() {
         }
     }
 }
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
     var username by remember { mutableStateOf("") }
@@ -67,7 +81,7 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
             Text(text = "Login",
                 color = Color(0xFF6495ED),
                 fontWeight = FontWeight.Bold,
-                fontSize = 24.sp,style = MaterialTheme.typography.h1)
+                fontSize = 24.sp,style = MaterialTheme.typography.headlineMedium)
             Divider(color = Color.LightGray, thickness = 2.dp, modifier = Modifier
                 .width(155.dp)
                 .padding(top = 20.dp, start = 20.dp))
@@ -92,9 +106,7 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                     color = Color.Black
                 )
             },
-            colors = TextFieldDefaults.textFieldColors(
-                backgroundColor = Color.Transparent
-            )
+            colors = TextFieldDefaults.textFieldColors(Color.Transparent)
 
         )
 
@@ -113,7 +125,7 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
             },
             placeholder = { Text(text = "password", color = Color.Black) },
             visualTransformation = PasswordVisualTransformation(),
-            colors = TextFieldDefaults.textFieldColors(backgroundColor = Color.Transparent)
+            colors = TextFieldDefaults.textFieldColors(Color.Transparent)
         )
 
 
@@ -122,7 +134,7 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
         if (error.isNotEmpty()) {
             Text(
                 text = error,
-                color = MaterialTheme.colors.error,
+                color = MaterialTheme.colorScheme.error,
                 modifier = Modifier.padding(vertical = 16.dp)
             )
         }
@@ -136,7 +148,7 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                         context.startActivity(
                             Intent(
                                 context,
-                                MainPage::class.java
+                                MainActivity::class.java
                             )
                         )
                         //onLoginSuccess()
@@ -148,9 +160,10 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                 }
             },
             shape = RoundedCornerShape(20.dp),
-            colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF77a2ef)),
-            modifier = Modifier.width(200.dp)
-            .padding(top = 16.dp)
+            colors = ButtonDefaults.buttonColors(Color(0xFF77a2ef)),
+            modifier = Modifier
+                .width(200.dp)
+                .padding(top = 16.dp)
         ) {
             Text(text = "Log In", fontWeight = FontWeight.Bold)
         }
@@ -180,6 +193,6 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
     }
 }
 private fun startMainPage(context: Context) {
-    val intent = Intent(context, MainPage::class.java)
+    val intent = Intent(context, MainActivity::class.java)
     ContextCompat.startActivity(context, intent, null)
 }
