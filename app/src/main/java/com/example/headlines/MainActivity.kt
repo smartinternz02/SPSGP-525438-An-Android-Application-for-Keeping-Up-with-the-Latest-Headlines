@@ -17,6 +17,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             HeadlinesTheme {
+                //Hi Someone
                 //Hi I am Nikhil
                 //chaitanya
                 //second change
