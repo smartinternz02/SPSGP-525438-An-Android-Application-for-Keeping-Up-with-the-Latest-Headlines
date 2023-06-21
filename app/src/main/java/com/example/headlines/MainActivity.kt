@@ -19,9 +19,12 @@ class MainActivity : ComponentActivity() {
             HeadlinesTheme {
                 //Hi Someone
                 //Hi I am Nikhil
-                //chaitanya
+                //chaitanya , robo 2.0
                 //second change
                 // A surface container using the 'background' color from the theme
+                //bharath commit 3.0
+
+
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
