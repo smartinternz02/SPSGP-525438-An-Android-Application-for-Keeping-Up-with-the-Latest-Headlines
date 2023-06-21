@@ -106,8 +106,7 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                     color = Color.Black
                 )
             },
-            colors = TextFieldDefaults.textFieldColors(Color.Transparent
-            )
+            colors = TextFieldDefaults.textFieldColors(Color.Black)
 
         )
 
@@ -125,7 +124,7 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
             },
             placeholder = { Text(text = "password", color = Color.Black) },
             visualTransformation = PasswordVisualTransformation(),
-            colors = TextFieldDefaults.textFieldColors(Color.Transparent)
+            colors = TextFieldDefaults.textFieldColors(Color.Black)
         )
 
 
@@ -143,7 +142,7 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                 )
             },
             placeholder = { Text(text = "email", color = Color.Black) },
-            colors = TextFieldDefaults.textFieldColors(Color.Transparent)
+            colors = TextFieldDefaults.textFieldColors(Color.Black)
         )
 
         Spacer(modifier = Modifier.height(8.dp))
