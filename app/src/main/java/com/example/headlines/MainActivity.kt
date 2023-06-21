@@ -21,6 +21,9 @@ class MainActivity : ComponentActivity() {
                 //chaitanya , robo 2.0
                 //second change
                 // A surface container using the 'background' color from the theme
+                //bharath commit
+
+
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
