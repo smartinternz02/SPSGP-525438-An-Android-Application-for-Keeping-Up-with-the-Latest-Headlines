@@ -21,6 +21,7 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
@@ -30,6 +31,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
@@ -61,8 +63,8 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
     Column(
         Modifier
             .fillMaxHeight()
-            .fillMaxWidth()
-            .padding(28.dp),
+            .fillMaxWidth(),
+           // .background(Color.Black),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center)
 
@@ -93,6 +95,7 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
         TextField(
             value = username,
             onValueChange = { username = it },
+            textStyle = TextStyle(color = Color.White),
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Person,
@@ -112,7 +115,7 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
 
 
         Spacer(modifier = Modifier.height(20.dp))
-
+/*
         TextField(
             value = password,
             onValueChange = { password = it },
@@ -128,6 +131,25 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
             colors = TextFieldDefaults.textFieldColors(Color.Black)
         )
 
+ */
+
+        OutlinedTextField(
+            value = password,
+            onValueChange ={password=it},
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.Lock,
+                    contentDescription = "lockIcon",
+                    tint = Color(0xFF6495ED)
+                )
+            },
+            placeholder = { Text(text = "password", color = Color.Black) },
+            //label = { Text(text = "Password")},
+            textStyle = TextStyle(color = Color.White),
+            visualTransformation = PasswordVisualTransformation(),
+            colors = TextFieldDefaults.textFieldColors(Color.Black)
+
+        )
 
 
         Spacer(modifier = Modifier.height(12.dp))
@@ -186,10 +208,6 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                 color = Color.Black
             )}
         }
-
-
-
-
     }
 }
 private fun startMainPage(context: Context) {

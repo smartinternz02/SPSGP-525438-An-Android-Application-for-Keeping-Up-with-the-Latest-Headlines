@@ -88,6 +88,7 @@ fun MovieItem(context: Context) {
     }
 }
 
+
 @Composable
 fun MovieItem(context: Context, movie: Articles, index: Int, selectedIndex: Int,
               onClick: (Int) -> Unit)

@@ -26,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -61,7 +62,7 @@ fun DisplayNewsContent(
     HeadlinesTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.background
+            color = Color.Black
         ) {
             Column(
                 modifier = Modifier
@@ -86,8 +87,12 @@ fun DisplayNewsCard(
     title: String,
     uriImage: String
 ) {
-    Card(modifier = Modifier.fillMaxWidth().fillMaxHeight()) {
-        Column {
+    Card(modifier = Modifier
+        .fillMaxWidth()
+        .fillMaxHeight()) {
+        Column(
+            modifier = Modifier.background(Color.White)
+        ){
             Image(
                 modifier = Modifier
                     .aspectRatio(1.5F),
@@ -98,18 +103,20 @@ fun DisplayNewsCard(
             Column(
                 modifier = Modifier.padding(
                     horizontal = 16.dp,
-                    vertical = 8.dp
-                )
+                    vertical = 8.dp,
+                ).background(Color.White).fillMaxWidth().fillMaxHeight()
             ) {
                 Text(
                     text = title,
-                    style = MaterialTheme.typography.headlineLarge,
-                    overflow = TextOverflow.Ellipsis
+                    style = MaterialTheme.typography.headlineMedium,
+                    overflow = TextOverflow.Ellipsis,
+                    color = Color.Blue
                 )
                 Text(text=" ")
                 Text(
                     text = desk,
                     style = MaterialTheme.typography.bodyMedium,
+                    color = Color.Black,
                     modifier = Modifier.padding(top = 4.dp)
                 )
             }
