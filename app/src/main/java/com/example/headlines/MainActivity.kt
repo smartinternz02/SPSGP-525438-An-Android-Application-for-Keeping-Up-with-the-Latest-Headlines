@@ -3,6 +3,7 @@ package com.example.headlines
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
+import android.graphics.Color.parseColor
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
@@ -44,10 +45,13 @@ class MainActivity : ComponentActivity() {
             HeadlinesTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colorScheme.background) {
-                    Column() {
+                    Column(
+                        modifier = Modifier.background(Color.Black)
+                    ) {
 
 
-                        Text(text = "Latest NEWS", fontSize = 32.sp, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
+                        Text(text = "Latest NEWS", fontSize = 32.sp, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center,
+                        color = Color.White)
 
                         MovieList(applicationContext, movieList = mainViewModel.movieListResponse)
                         mainViewModel.getMovieList()
@@ -72,7 +76,6 @@ fun MovieList(context: Context, movieList: List<Articles>) {
     }
 
 }
-
 @Composable
 fun MovieItem(context: Context) {
     val movie = Articles(
@@ -113,32 +116,17 @@ fun MovieItem(context: Context, movie: Articles, index: Int, selectedIndex: Int,
                 Modifier
                     .padding(4.dp)
                     .fillMaxSize()
+                    .background(Color(parseColor("#132A36")))
 
             )
             {
-                Image(
-                    painter = rememberImagePainter(
-                        data = movie.urlToImage,
-                        builder = {
-                            scale(Scale.FILL)
-                            placeholder(R.drawable.placeholder)
-                            transformations(CircleCropTransformation())
-                        }
-                    ),
-                    contentDescription = movie.description,
-                    modifier = Modifier
-                        .fillMaxHeight()
-                        .weight(0.3f)
-                )
-
-
                 Column(
                     verticalArrangement = Arrangement.Center,
                     modifier = Modifier
                         .padding(4.dp)
                         .fillMaxHeight()
                         .weight(0.8f)
-                        .background(Color.Gray)
+                        //.background(Color.Gray)
                         .padding(20.dp)
                         .selectable(true, true, null,
                             onClick = {
@@ -159,8 +147,30 @@ fun MovieItem(context: Context, movie: Articles, index: Int, selectedIndex: Int,
                         fontWeight = FontWeight.Bold
                     )
 
-                    HtmlText(html = movie.description.toString())
+                   // HtmlText(html = movie.description.toString())
                 }
+                Column(
+                    modifier = Modifier.fillMaxHeight()
+                ) {
+
+                    Image(
+                        painter = rememberImagePainter(
+                            data = movie.urlToImage,
+                            builder = {
+                                scale(Scale.FILL)
+                                placeholder(R.drawable.placeholder)
+                                //transformations(CircleCropTransformation())
+                            }
+                        ),
+                        contentDescription = movie.description,
+                        modifier = Modifier
+                            .fillMaxHeight()
+                            .weight(0.3f)
+                            .size(130.dp, 80.dp)
+                    )
+
+                }
+
             }
         }
     }

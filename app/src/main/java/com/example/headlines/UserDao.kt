@@ -1,4 +1,4 @@
-package com.example.headlines
+/*package com.example.headlines
 
 import androidx.room.*
 
@@ -17,3 +17,4 @@ interface UserDao {
     @Delete
     suspend fun deleteUser(user: User)
 }
+*/
