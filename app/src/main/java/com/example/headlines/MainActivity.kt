@@ -1,9 +1,14 @@
 package com.example.headlines
 
+
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
+import android.graphics.Color.BLACK
+import android.graphics.Color.WHITE
 import android.graphics.Color.parseColor
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
@@ -20,6 +25,8 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Menu
+
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -31,6 +38,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -45,6 +53,7 @@ import coil.transform.CircleCropTransformation
 import com.example.example.Articles
 import com.example.headlines.ui.theme.HeadlinesTheme
 import androidx.compose.ui.res.colorResource
+import androidx.compose.runtime.Composable
 
 class MainActivity : ComponentActivity() {
     val mainViewModel by viewModels<MainViewModel>()
@@ -58,6 +67,7 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.background(Color.Black)
                     ) {
                         var isExpanded by remember { mutableStateOf(false) }
+
                         Row(Modifier.fillMaxWidth()) {
 
                             ExpandableIcon(
@@ -66,7 +76,7 @@ class MainActivity : ComponentActivity() {
                                     .align(Alignment.CenterVertically),
                                 expanded = isExpanded,
                                 onExpand = { isExpanded = !isExpanded },
-                                onSettingsClicked = { /* Handle settings click */ },
+                                onAboutClicked = { showDialog(this@MainActivity) },
                                 onSignOutClicked = {
                                     startActivity(
                                         Intent(this@MainActivity, RegistrationActivity::class.java)
@@ -76,8 +86,8 @@ class MainActivity : ComponentActivity() {
                             )
 
                             Text(
-                                text = "Latest NEWS",
-                                fontSize = 32.sp,
+                                text = "News Whizz📰",
+                                fontSize = 30.sp,
                                 modifier = Modifier
                                     .weight(1f)
                                     .align(Alignment.CenterVertically),
@@ -100,7 +110,7 @@ fun ExpandableIcon(
     modifier: Modifier = Modifier,
     expanded: Boolean,
     onExpand: () -> Unit,
-    onSettingsClicked: () -> Unit,
+    onAboutClicked: () -> Unit,
     onSignOutClicked: () -> Unit
 ) {
     Box(modifier = modifier) {
@@ -125,7 +135,7 @@ fun ExpandableIcon(
                     text = "About",
                     color = Color.White,
                     modifier = Modifier
-                        .clickable(onClick = onSettingsClicked)
+                        .clickable(onClick = onAboutClicked)
                         .padding(8.dp),
                     style = MaterialTheme.typography.bodyMedium
                 )
@@ -242,4 +252,27 @@ fun MovieItem(
         }
     }
 }
+
+
+fun showDialog(context: Context) {
+    val dialog = AlertDialog.Builder(context)
+        .setTitle("ⓘAbout")
+        .setMessage("Version 1.0\n" +
+                "We will be releasing more features.\n" +
+                "Stay Tuned")
+        .setPositiveButton("OK")
+
+        { _, _ ->
+            // Handle OK button click if needed
+        }
+        .create()
+
+    // Set the background color of the dialog to black
+    // dialog.window?.setBackgroundDrawable(ColorDrawable(BLACK))
+
+    // Set the title and message colors to white
+
+    dialog.show()
+}
+
 
