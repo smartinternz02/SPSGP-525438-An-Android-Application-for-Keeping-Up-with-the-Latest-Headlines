@@ -27,6 +27,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -92,7 +93,7 @@ fun DisplayNewsCard(
         .fillMaxWidth()
         .fillMaxHeight()) {
         Column(
-            modifier = Modifier.background(Color.White)
+            modifier = Modifier.background(Color(0xFFFEFCF3))
         ){
             Image(
                 modifier = Modifier
@@ -107,17 +108,19 @@ fun DisplayNewsCard(
                         horizontal = 16.dp,
                         vertical = 8.dp,
                     )
-                    .background(Color.White)
-                    .fillMaxWidth()
-                    .fillMaxHeight()
+                    .fillMaxSize()
             ) {
                 Text(
                     text = title,
-                    style = MaterialTheme.typography.headlineMedium,
-                    overflow = TextOverflow.Ellipsis,
-                    color = Color.Blue
+                    style = MaterialTheme.typography.headlineSmall.copy(
+                        fontStyle = FontStyle.Italic,
+                        color = Color.Blue
+                    ),
+                    overflow = TextOverflow.Ellipsis
                 )
+
                 Text(text=" ")
+
                 Text(
                     text = desk,
                     style = MaterialTheme.typography.bodyMedium,

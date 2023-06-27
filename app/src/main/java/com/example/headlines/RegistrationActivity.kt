@@ -3,6 +3,7 @@ package com.example.headlines
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -71,20 +72,20 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
         verticalArrangement = Arrangement.Center)
 
     {
-        Row {
+
             Text(
                 text = "Sign Up",
-                color = Color(0xFF6495ED),
+                color = Color(0xFF8c182a),
                 fontWeight = FontWeight.Bold,
-                fontSize = 24.sp, style = MaterialTheme.typography.headlineLarge
+                fontSize = 24.sp, style = MaterialTheme.typography.headlineLarge,
+                modifier = Modifier.padding(bottom = 10.dp)
             )
             Divider(
                 color = Color.Red, thickness = 2.dp, modifier = Modifier
                     .width(250.dp)
-                    .padding(top = 20.dp, start = 10.dp, end = 70.dp)
+                    //.padding(top = 20.dp, start = 10.dp, end = 70.dp)
             )
 
-        }
 
         Image(
             painter = painterResource(id = R.drawable.sign_up),
@@ -99,7 +100,7 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                 Icon(
                     imageVector = Icons.Default.Person,
                     contentDescription = "personIcon",
-                    tint = Color(0xFF6495ED)
+                    tint = Color(0xFF4a030e)
                 )
             },
             //placeholder = { Text(text = "Username", color = Color.Black) },
@@ -119,7 +120,7 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                 Icon(
                     imageVector = Icons.Default.Lock,
                     contentDescription = "lockIcon",
-                    tint = Color(0xFF6495ED)
+                    tint = Color(0xFF4a030e)
                 )
             },
             //placeholder = { Text(text = "password", color = Color.Black) },
@@ -140,7 +141,7 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                 Icon(
                     imageVector = Icons.Default.Email,
                     contentDescription = "emailIcon",
-                    tint = Color(0xFF6495ED)
+                    tint = Color(0xFF4a030e)
                 )
             },
             //placeholder = { Text(text = "password", color = Color.Black) },
@@ -156,11 +157,7 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
         Spacer(modifier = Modifier.height(8.dp))
 
         if (error.isNotEmpty()) {
-            Text(
-                text = error,
-                color = MaterialTheme.colorScheme.error,
-                modifier = Modifier.padding(vertical = 16.dp)
-            )
+            Toast.makeText(context,error,Toast.LENGTH_SHORT).show()
         }
 
         Button(
@@ -188,7 +185,7 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                 }
             },
             shape = RoundedCornerShape(20.dp),
-            colors = ButtonDefaults.buttonColors(Color(0xFF77a2ef)),
+            colors = ButtonDefaults.buttonColors(Color(0xFF4a030e)),
             modifier = Modifier.width(200.dp)
                 .padding(top = 16.dp)
         ) {

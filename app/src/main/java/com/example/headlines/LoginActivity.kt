@@ -2,9 +2,12 @@
 
 package com.example.headlines
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -44,14 +47,28 @@ import com.example.headlines.MainActivity
 
 
 class LoginActivity : ComponentActivity() {
-    private lateinit var databaseHelper: UserDatabaseHelper
+    private lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        databaseHelper = UserDatabaseHelper(this)
+        sharedPreferences = getSharedPreferences("login_prefs", Context.MODE_PRIVATE)
+        val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
+
+        if (isLoggedIn) {
+            startMainPage(this)
+            finish()
+            return
+        }
+        var databaseHelper = UserDatabaseHelper(this)
         setContent {
 
             LoginScreen(this, databaseHelper)
         }
+    }
+
+    private fun startMainPage(context: Context) {
+        val intent = Intent(context, MainActivity::class.java)
+        ContextCompat.startActivity(context, intent, null)
     }
 }
 
@@ -61,6 +78,8 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var error by remember { mutableStateOf("") }
+
+    val sharedPreferences = context.getSharedPreferences("login_prefs", Context.MODE_PRIVATE)
 
     Column(
         Modifier
@@ -135,11 +154,7 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
 
         Spacer(modifier = Modifier.height(12.dp))
         if (error.isNotEmpty()) {
-            Text(
-                text = error,
-                color = MaterialTheme.colorScheme.error,
-                modifier = Modifier.padding(vertical = 16.dp)
-            )
+            Toast.makeText(context,error,Toast.LENGTH_SHORT).show()
         }
 
         Button(
@@ -148,13 +163,14 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                     val user = databaseHelper.getUserByUsername(username)
                     if (user != null && user.password == password) {
                         error = "Successfully log in"
+                        sharedPreferences.edit().putBoolean("isLoggedIn", true).apply()
                         context.startActivity(
                             Intent(
                                 context,
                                 MainActivity::class.java
                             )
                         )
-                        //onLoginSuccess()
+                        (context as? Activity)?.finish()
                     } else {
                         error = "Invalid username OR password"
                     }
