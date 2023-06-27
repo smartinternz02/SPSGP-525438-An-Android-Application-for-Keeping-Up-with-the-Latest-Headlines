@@ -101,8 +101,9 @@ fun MovieItem(context: Context, movie: Articles, index: Int, selectedIndex: Int,
 
     Card(
         modifier = Modifier
-            .padding(8.dp, 4.dp)
-            .fillMaxSize()
+            .padding(20.dp, 8.7.dp)
+            //  .fillMaxSize()
+            .size(380.dp, 113.dp)
             .selectable(true, true, null,
                 onClick = {
                     Log.i("test123abc", "MovieItem: $index/n$selectedIndex")
@@ -110,13 +111,14 @@ fun MovieItem(context: Context, movie: Articles, index: Int, selectedIndex: Int,
             .clickable { onClick(index) }
             .height(180.dp), shape = RoundedCornerShape(8.dp)
     ) {
-        Surface(color = Color.White) {
-
+        Surface(color = Color.LightGray)
+        {
+        //Surface(color = Color(parseColor("#39FF14")))
             Row(
                 Modifier
                     .padding(4.dp)
                     .fillMaxSize()
-                    .background(Color(parseColor("#132A36")))
+                    .background(Color(parseColor("#4a030e")))
 
             )
             {
@@ -144,7 +146,8 @@ fun MovieItem(context: Context, movie: Articles, index: Int, selectedIndex: Int,
                     Text(
                         text = movie.title.toString(),
                         style = MaterialTheme.typography.titleSmall,
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White
                     )
 
                    // HtmlText(html = movie.description.toString())

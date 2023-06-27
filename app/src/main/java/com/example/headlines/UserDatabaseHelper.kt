@@ -50,6 +50,14 @@ class UserDatabaseHelper(context: Context) :
         db.close()
     }
 
+    fun updatePasswordByEmail(email: String, newEmail: String) {
+        val db = writableDatabase
+        val values = ContentValues()
+        values.put(COLUMN_EMAIL, newEmail)
+        db.update(TABLE_NAME, values, "$COLUMN_EMAIL = ?", arrayOf(email))
+        db.close()
+    }
+
     @SuppressLint("Range")
     fun getUserByUsername(username: String): User? {
         val db = readableDatabase

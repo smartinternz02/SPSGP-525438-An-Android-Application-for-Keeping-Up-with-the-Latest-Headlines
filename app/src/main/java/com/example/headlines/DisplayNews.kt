@@ -35,6 +35,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.text.HtmlCompat
 import coil.compose.rememberImagePainter
 import com.example.headlines.ui.theme.HeadlinesTheme
+import okhttp3.internal.platform.android.BouncyCastleSocketAdapter.Companion.factory
 
 class DisplayNews : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -101,10 +102,14 @@ fun DisplayNewsCard(
                 contentScale = ContentScale.FillBounds
             )
             Column(
-                modifier = Modifier.padding(
-                    horizontal = 16.dp,
-                    vertical = 8.dp,
-                ).background(Color.White).fillMaxWidth().fillMaxHeight()
+                modifier = Modifier
+                    .padding(
+                        horizontal = 16.dp,
+                        vertical = 8.dp,
+                    )
+                    .background(Color.White)
+                    .fillMaxWidth()
+                    .fillMaxHeight()
             ) {
                 Text(
                     text = title,
@@ -123,7 +128,6 @@ fun DisplayNewsCard(
         }
     }
 }
-
 @Composable
 fun HtmlText(html: String, modifier: Modifier = Modifier) {
     AndroidView(
