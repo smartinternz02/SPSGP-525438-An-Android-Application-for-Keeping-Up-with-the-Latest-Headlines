@@ -21,6 +21,8 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
@@ -30,6 +32,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontVariation.width
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
@@ -62,7 +66,7 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
         Modifier
             .fillMaxHeight()
             .fillMaxWidth()
-            .padding(28.dp),
+            .background(Color.Black),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center)
 
@@ -88,11 +92,11 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
 
         }
 
-        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(modifier = Modifier.height(25.dp))
 
-        TextField(
+        OutlinedTextField(
             value = username,
-            onValueChange = { username = it },
+            onValueChange ={username=it},
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Person,
@@ -100,22 +104,19 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                     tint = Color(0xFF6495ED)
                 )
             },
-            placeholder = {
-                Text(
-                    text = "username",
-                    color = Color.Black
-                )
-            },
-            colors = TextFieldDefaults.textFieldColors(Color.Black)
+            //placeholder = { Text(text = "Username", color = Color.Black) },
+            label = { Text(text = "username", color = Color.White)},
+            textStyle = TextStyle(color = Color.White),
+            //visualTransformation = PasswordVisualTransformation(),
+            //colors = TextFieldDefaults.textFieldColors(Color.Black)
 
         )
 
+        Spacer(modifier = Modifier.height(10.dp))
 
-        Spacer(modifier = Modifier.height(20.dp))
-
-        TextField(
+        OutlinedTextField(
             value = password,
-            onValueChange = { password = it },
+            onValueChange ={password=it},
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Lock,
@@ -123,11 +124,13 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                     tint = Color(0xFF6495ED)
                 )
             },
-            placeholder = { Text(text = "password", color = Color.Black) },
+            //placeholder = { Text(text = "password", color = Color.Black) },
+            label = { Text(text = "Password", color = Color.White)},
+            textStyle = TextStyle(color = Color.White),
             visualTransformation = PasswordVisualTransformation(),
-            colors = TextFieldDefaults.textFieldColors(Color.Black)
-        )
+            //colors = TextFieldDefaults.textFieldColors(Color.Black)
 
+        )
 
 
         Spacer(modifier = Modifier.height(12.dp))
@@ -168,7 +171,9 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
             Text(text = "Log In", fontWeight = FontWeight.Bold)
         }
 
+
         Row(modifier = Modifier.fillMaxWidth()) {
+            Spacer(modifier = Modifier.width(80.dp))
             TextButton(onClick = {
                 context.startActivity(
                     Intent(
@@ -176,20 +181,23 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                         RegistrationActivity::class.java
                     ))})
             { Text(text = "Sign up",
-                color = Color.Black
+                color = Color.White
             )}
 
-            Spacer(modifier = Modifier.width(100.dp))
+            Spacer(modifier = Modifier.width(30.dp))
 
-            TextButton(onClick = { /* Do something! */ })
+            TextButton(onClick = {
+
+                context.startActivity(
+                    Intent(
+                        context,
+                        RegistrationActivity::class.java
+                    ))
+            })
             { Text(text = "Forgot password ?",
-                color = Color.Black
+                color = Color.White
             )}
         }
-
-
-
-
     }
 }
 private fun startMainPage(context: Context) {

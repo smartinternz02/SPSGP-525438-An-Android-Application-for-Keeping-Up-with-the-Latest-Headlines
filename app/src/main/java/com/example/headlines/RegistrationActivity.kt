@@ -20,6 +20,7 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
@@ -29,6 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
@@ -62,7 +64,7 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
 
     Column(
         Modifier
-            .background(Color.White)
+            .background(Color.Black)
             .fillMaxHeight()
             .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -77,7 +79,7 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                 fontSize = 24.sp, style = MaterialTheme.typography.headlineLarge
             )
             Divider(
-                color = Color.LightGray, thickness = 2.dp, modifier = Modifier
+                color = Color.Red, thickness = 2.dp, modifier = Modifier
                     .width(250.dp)
                     .padding(top = 20.dp, start = 10.dp, end = 70.dp)
             )
@@ -90,9 +92,9 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
             modifier = Modifier.height(270.dp)
         )
 
-        TextField(
+        OutlinedTextField(
             value = username,
-            onValueChange = { username = it },
+            onValueChange ={username=it},
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Person,
@@ -100,21 +102,19 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                     tint = Color(0xFF6495ED)
                 )
             },
-            placeholder = {
-                Text(
-                    text = "username",
-                    color = Color.Black
-                )
-            },
-            colors = TextFieldDefaults.textFieldColors(Color.Black)
+            //placeholder = { Text(text = "Username", color = Color.Black) },
+            label = { Text(text = "username", color = Color.White)},
+            textStyle = TextStyle(color = Color.White),
+            //visualTransformation = PasswordVisualTransformation(),
+            //colors = TextFieldDefaults.textFieldColors(Color.Black)
 
         )
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        TextField(
+        OutlinedTextField(
             value = password,
-            onValueChange = { password = it },
+            onValueChange ={password=it},
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Lock,
@@ -122,18 +122,20 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                     tint = Color(0xFF6495ED)
                 )
             },
-            placeholder = { Text(text = "password", color = Color.Black) },
+            //placeholder = { Text(text = "password", color = Color.Black) },
+            label = { Text(text = "Password", color = Color.White)},
+            textStyle = TextStyle(color = Color.White),
             visualTransformation = PasswordVisualTransformation(),
-            colors = TextFieldDefaults.textFieldColors(Color.Black)
+            //colors = TextFieldDefaults.textFieldColors(Color.Black)
+
         )
 
 
         Spacer(modifier = Modifier.height(16.dp))
 
-
-        TextField(
+        OutlinedTextField(
             value = email,
-            onValueChange = { email = it },
+            onValueChange ={email=it},
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Email,
@@ -141,9 +143,15 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                     tint = Color(0xFF6495ED)
                 )
             },
-            placeholder = { Text(text = "email", color = Color.Black) },
-            colors = TextFieldDefaults.textFieldColors(Color.Black)
+            //placeholder = { Text(text = "password", color = Color.Black) },
+            label = { Text(text = "email", color = Color.White)},
+            textStyle = TextStyle(color = Color.White),
+            //visualTransformation = PasswordVisualTransformation(),
+            //colors = TextFieldDefaults.textFieldColors(Color.Black)
+
         )
+
+
 
         Spacer(modifier = Modifier.height(8.dp))
 
@@ -194,7 +202,7 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
         ) {
 
 
-            Text(text = "Have an account?")
+            Text(text = "Have an account?",color= Color.White)
 
             TextButton(onClick = {
                 context.startActivity(
