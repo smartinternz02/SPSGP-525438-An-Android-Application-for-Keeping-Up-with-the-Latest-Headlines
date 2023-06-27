@@ -102,7 +102,7 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                 .width(155.dp)
                 .padding(top = 20.dp, end = 20.dp))
             Text(text = "Login",
-                color = Color(0xFF6495ED),
+                color = Color(0xFF8c182a),
                 fontWeight = FontWeight.Bold,
                 fontSize = 24.sp,style = MaterialTheme.typography.headlineMedium)
             Divider(color = Color.LightGray, thickness = 2.dp, modifier = Modifier
@@ -120,7 +120,7 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                 Icon(
                     imageVector = Icons.Default.Person,
                     contentDescription = "personIcon",
-                    tint = Color(0xFF6495ED)
+                    tint = Color(0xFF4a030e)
                 )
             },
             //placeholder = { Text(text = "Username", color = Color.Black) },
@@ -140,7 +140,7 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                 Icon(
                     imageVector = Icons.Default.Lock,
                     contentDescription = "lockIcon",
-                    tint = Color(0xFF6495ED)
+                    tint = Color(0xFF4a030e)
                 )
             },
             //placeholder = { Text(text = "password", color = Color.Black) },
@@ -179,7 +179,7 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                 }
             },
             shape = RoundedCornerShape(20.dp),
-            colors = ButtonDefaults.buttonColors(Color(0xFF77a2ef)),
+            colors = ButtonDefaults.buttonColors(Color(0xFF4a030e)),
             modifier = Modifier
                 .width(200.dp)
                 .padding(top = 16.dp)
