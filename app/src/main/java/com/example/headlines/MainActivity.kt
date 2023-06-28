@@ -89,13 +89,7 @@ class MainActivity : ComponentActivity() {
                                 onExpand = { isExpanded = !isExpanded },
                                 onAboutClicked = { showDialog(this@MainActivity) },
                                 onSignOutClicked = {
-                                    startActivity(
-                                        Intent(
-                                            this@MainActivity,
-                                            RegistrationActivity::class.java
-                                        )
-                                    )
-                                    finish()
+                                        signOut()
                                 }
                             )
 
@@ -126,6 +120,13 @@ class MainActivity : ComponentActivity() {
             .build()
 
         WorkManager.getInstance(this).enqueue(notificationWorkRequest)
+    }
+
+    private fun signOut() {
+        val sharedPreferences = getSharedPreferences("login_prefs", Context.MODE_PRIVATE)
+        sharedPreferences.edit().putBoolean("isLoggedIn", false).apply()
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
     }
 }
 
@@ -232,9 +233,6 @@ fun ArticleItem(
     selectedIndex: Int,
     onClick: (Int) -> Unit
 ) {
-    val backgroundColor =
-        if (index == selectedIndex) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.background
-
     Card(
         modifier = Modifier
             .padding(20.dp, 8.7.dp)
