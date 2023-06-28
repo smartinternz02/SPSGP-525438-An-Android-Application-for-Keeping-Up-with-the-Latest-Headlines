@@ -157,6 +157,8 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
         )
 
 
+
+
         Spacer(modifier = Modifier.height(12.dp))
         if (error.isNotEmpty()) {
             Toast.makeText(context,error,Toast.LENGTH_SHORT).show()
@@ -188,7 +190,7 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
             modifier = Modifier
                 .width(200.dp)
                 .padding(top = 16.dp)
-        ) {
+        ){
             Text(text = "Log In", fontWeight = FontWeight.Bold)
         }
 
@@ -221,3 +223,5 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
         }
     }
 }
+
+

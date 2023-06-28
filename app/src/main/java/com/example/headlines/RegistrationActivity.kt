@@ -22,6 +22,9 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Snackbar
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
@@ -40,6 +43,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import com.example.headlines.ui.theme.HeadlinesTheme
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class RegistrationActivity : ComponentActivity() {
     private lateinit var databaseHelper: UserDatabaseHelper
@@ -63,6 +69,7 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
     var password by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var error by remember { mutableStateOf("") }
+    val snackbarHostState = remember { SnackbarHostState() }
 
     Column(
         Modifier
@@ -203,6 +210,8 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
             Text(text = "Register", fontWeight = FontWeight.Bold)
         }
 
+
+
         Row(
             modifier = Modifier.padding(1.dp),
             verticalAlignment = Alignment.CenterVertically,
@@ -232,6 +241,13 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
 private fun startLoginActivity(context: Context) {
     val intent = Intent(context, LoginActivity::class.java)
     ContextCompat.startActivity(context, intent, null)
+}
+
+fun isPasswordValid(password: String): Boolean
+{
+    val alphabetCount = password.count { it.isLetter() }
+    val digitCount = password.count { it.isDigit() }
+    return alphabetCount >= 5 && digitCount >= 1
 }
 
 
