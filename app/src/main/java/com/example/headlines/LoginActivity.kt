@@ -221,7 +221,3 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
         }
     }
 }
-private fun startMainPage(context: Context) {
-    val intent = Intent(context, MainActivity::class.java)
-    ContextCompat.startActivity(context, intent, null)
-}
