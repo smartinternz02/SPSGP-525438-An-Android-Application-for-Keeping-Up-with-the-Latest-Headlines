@@ -9,7 +9,7 @@ interface ApiService {
     //@GET("movielist.json")
     @GET("top-headlines?country=us&category=business&apiKey=684cb893caf7425abeffad82ac1d0f4e")
     ///@GET("search?q=chatgpt")
-    suspend fun getMovies() :News
+    suspend fun getArticles() :News
 
     companion object {
         var apiService: ApiService? = null

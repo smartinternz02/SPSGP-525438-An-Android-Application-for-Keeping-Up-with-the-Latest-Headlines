@@ -96,8 +96,8 @@ class MainActivity : ComponentActivity() {
                             )
                         }
 
-                        MovieList(applicationContext, movieList = mainViewModel.movieListResponse)
-                        mainViewModel.getMovieList()
+                        ArticleList(applicationContext, articleList = mainViewModel.articleListResponse)
+                        mainViewModel.getArticleList()
                     }
                 }
             }
@@ -153,13 +153,13 @@ fun ExpandableIcon(
 }
 
 @Composable
-fun MovieList(context: Context, movieList: List<Articles>) {
+fun ArticleList(context: Context, articleList: List<Articles>) {
     var selectedIndex by remember { mutableStateOf(-1) }
     LazyColumn {
-        itemsIndexed(items = movieList) { index, item ->
-            MovieItem(
+        itemsIndexed(items = articleList) { index, item ->
+            ArticleItem(
                 context = context,
-                movie = item,
+                article = item,
                 index = index,
                 selectedIndex = selectedIndex
             ) { i ->
@@ -170,9 +170,9 @@ fun MovieList(context: Context, movieList: List<Articles>) {
 }
 
 @Composable
-fun MovieItem(
+fun ArticleItem(
     context: Context,
-    movie: Articles,
+    article: Articles,
     index: Int,
     selectedIndex: Int,
     onClick: (Int) -> Unit
@@ -186,7 +186,7 @@ fun MovieItem(
             .size(380.dp, 113.dp)
             .selectable(true, true, null,
                 onClick = {
-                    Log.i("test123abc", "MovieItem: $index/n$selectedIndex")
+                    Log.i("test123abc", "ArticleItem: $index/n$selectedIndex")
                 })
             .clickable { onClick(index) }
             .height(180.dp),
@@ -211,18 +211,18 @@ fun MovieItem(
                         .padding(20.dp)
                         .selectable(true, true, null,
                             onClick = {
-                                Log.i("test123abc", "MovieItem: $index/n${movie.description}")
+                                Log.i("test123abc", "ArticleItem: $index/n${article.description}")
                                 context.startActivity(
                                     Intent(context, DisplayNews::class.java)
                                         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                                        .putExtra("desk", movie.description.toString())
-                                        .putExtra("urlToImage", movie.urlToImage)
-                                        .putExtra("title", movie.title)
+                                        .putExtra("desk", article.description.toString())
+                                        .putExtra("urlToImage", article.urlToImage)
+                                        .putExtra("title", article.title)
                                 )
                             })
                 ) {
                     Text(
-                        text = movie.title.toString(),
+                        text = article.title.toString(),
                         style = MaterialTheme.typography.titleSmall,
                         fontWeight = FontWeight.Bold,
                         color = Color.White
@@ -234,13 +234,13 @@ fun MovieItem(
                 ) {
                     Image(
                         painter = rememberImagePainter(
-                            data = movie.urlToImage,
+                            data = article.urlToImage,
                             builder = {
                                 scale(Scale.FILL)
                                 placeholder(R.drawable.placeholder)
                             }
                         ),
-                        contentDescription = movie.description,
+                        contentDescription = article.description,
                         modifier = Modifier
                             .fillMaxHeight()
                             .weight(0.3f)

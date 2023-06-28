@@ -10,14 +10,14 @@ import com.example.example.Articles
 import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
-    var movieListResponse:List<Articles> by mutableStateOf(listOf())
+    var articleListResponse:List<Articles> by mutableStateOf(listOf())
     var errorMessage: String by mutableStateOf("")
-    fun getMovieList() {
+    fun getArticleList() {
         viewModelScope.launch {
             val apiService = ApiService.getInstance()
             try {
-                val movieList = apiService.getMovies()
-                movieListResponse = movieList.articles
+                val articleList = apiService.getArticles()
+                articleListResponse = articleList.articles
             }
             catch (e: Exception) {
                 errorMessage = e.message.toString()
