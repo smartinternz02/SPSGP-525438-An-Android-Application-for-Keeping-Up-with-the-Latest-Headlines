@@ -33,6 +33,7 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -91,22 +92,26 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
 
     {
         Image(
-            painter = painterResource(id = R.drawable.news),
-            contentDescription = "")
+            painter = painterResource(id = R.drawable.globe),
+            contentDescription = "",
+            modifier = Modifier
+                .height(290.dp)
+                .clip(shape = RoundedCornerShape(200.dp))
+        )
 
         Spacer(modifier = Modifier.height(10.dp))
 
 
         Row {
-            Divider(color = Color.LightGray, thickness = 2.dp, modifier = Modifier
-                .width(155.dp)
+            Divider(color = Color(0xFF4A030E), thickness = 2.dp, modifier = Modifier
+                .width(110.dp)
                 .padding(top = 20.dp, end = 20.dp))
             Text(text = "Login",
                 color = Color(0xFF8c182a),
                 fontWeight = FontWeight.Bold,
                 fontSize = 24.sp,style = MaterialTheme.typography.headlineMedium)
-            Divider(color = Color.LightGray, thickness = 2.dp, modifier = Modifier
-                .width(155.dp)
+            Divider(color = Color(0xFF4A030E), thickness = 2.dp, modifier = Modifier
+                .width(110.dp)
                 .padding(top = 20.dp, start = 20.dp))
 
         }

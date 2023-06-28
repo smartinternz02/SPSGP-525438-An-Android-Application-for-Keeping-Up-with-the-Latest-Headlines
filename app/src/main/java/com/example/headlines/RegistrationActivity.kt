@@ -29,6 +29,7 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -73,25 +74,34 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
 
     {
 
-            Text(
-                text = "Sign Up",
-                color = Color(0xFF8c182a),
-                fontWeight = FontWeight.Bold,
-                fontSize = 24.sp, style = MaterialTheme.typography.headlineLarge,
-                modifier = Modifier.padding(bottom = 10.dp)
-            )
-            Divider(
-                color = Color.Red, thickness = 2.dp, modifier = Modifier
-                    .width(250.dp)
-                    //.padding(top = 20.dp, start = 10.dp, end = 70.dp)
-            )
+
 
 
         Image(
-            painter = painterResource(id = R.drawable.sign_up),
+            painter = painterResource(id = R.drawable.signupwhiz),
             contentDescription = "",
-            modifier = Modifier.height(270.dp)
+            modifier = Modifier
+                .height(290.dp)
+                .clip(shape = RoundedCornerShape(18.dp))
         )
+        Spacer(modifier = Modifier.padding(2.dp))
+
+        Text(
+            text = "Sign Up",
+            color = Color(0xFF8c182a),
+            fontWeight = FontWeight.Bold,
+            fontSize = 24.sp, style = MaterialTheme.typography.headlineLarge,
+            modifier = Modifier.padding(bottom = 5.dp)
+        )
+        Divider(
+            color = Color(0xFF4A030E),
+            thickness = 2.dp,
+            modifier = Modifier
+                .width(250.dp)
+            //.padding(top = 20.dp, start = 10.dp, end = 70.dp)
+        )
+
+        Spacer(modifier = Modifier.padding(5.dp))
 
         OutlinedTextField(
             value = username,
@@ -132,7 +142,7 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
         )
 
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
         OutlinedTextField(
             value = email,
@@ -154,7 +164,7 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
 
 
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(3.dp))
 
         if (error.isNotEmpty()) {
             Toast.makeText(context,error,Toast.LENGTH_SHORT).show()
@@ -186,14 +196,15 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
             },
             shape = RoundedCornerShape(20.dp),
             colors = ButtonDefaults.buttonColors(Color(0xFF4a030e)),
-            modifier = Modifier.width(200.dp)
+            modifier = Modifier
+                .width(200.dp)
                 .padding(top = 16.dp)
         ) {
             Text(text = "Register", fontWeight = FontWeight.Bold)
         }
 
         Row(
-            modifier = Modifier.padding(30.dp),
+            modifier = Modifier.padding(1.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
