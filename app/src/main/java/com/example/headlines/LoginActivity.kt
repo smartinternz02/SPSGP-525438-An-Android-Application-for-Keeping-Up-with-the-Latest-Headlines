@@ -212,7 +212,7 @@ fun LoginScreen(context: Context, databaseHelper: UserDatabaseHelper) {
                 context.startActivity(
                     Intent(
                         context,
-                        RegistrationActivity::class.java
+                        AccountRetrievalActivity::class.java
                     ))
             })
             { Text(text = "Forgot password ?",
