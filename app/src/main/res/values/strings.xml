@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">headlines</string>
+    <string name="app_name">News Whiz</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_main_page">MainActivity</string>
     <string name="title_activity_registration">RegistrationActivity</string>
