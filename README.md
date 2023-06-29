@@ -36,6 +36,7 @@ It's and android app built with kotlin. Our app is a user-friendly news applicat
 
 
 ## Download
-.
-## Reference
-.
+
+## Guide
+[![Project Report](https://img.shields.io/badge/Project%20Report-View%20Here-blue.svg)](https://drive.google.com/file/d/1GElnbmjbScRVkFy4aegT1asHwaAdVAYE/view?usp=sharing)
+
