@@ -180,23 +180,26 @@ fun RegistrationScreen(context: Context, databaseHelper: UserDatabaseHelper) {
         Button(
             onClick = {
                 if (username.isNotEmpty() && password.isNotEmpty() && email.isNotEmpty()) {
-                    val user = User(
-                        id = null,
-                        firstName = username,
-                        lastName = null,
-                        email = email,
-                        password = password
-                    )
-                    databaseHelper.insertUser(user)
-                    error = "User registered successfully"
-                    // Start LoginActivity using the current context
-                    context.startActivity(
-                        Intent(
-                            context,
-                            LoginActivity::class.java
+                    if (isPasswordValid(password)) {
+                        val user = User(
+                            id = null,
+                            firstName = username,
+                            lastName = null,
+                            email = email,
+                            password = password
                         )
-                    )
-
+                        databaseHelper.insertUser(user)
+                        error = "User registered successfully"
+                        // Start LoginActivity using the current context
+                        context.startActivity(
+                            Intent(
+                                context,
+                                LoginActivity::class.java
+                            )
+                        )
+                    } else {
+                        error = "Password should contain at least 5 alphabets and 1 number"
+                    }
                 } else {
                     error = "Please fill all fields"
                 }
