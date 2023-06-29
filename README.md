@@ -36,6 +36,12 @@ It's and android app built with kotlin. Our app is a user-friendly news applicat
 
 
 ## Download
+<a href="https://drive.google.com/file/d/1U4-5RmE0adpKsE2Zzr_8J9qtUjbSV8Gq/view">
+  <img src="https://github.com/bharath9812/News-Whiz/assets/113575759/38bb7c1e-0de7-4b13-adaa-c2d89ad2b30f" alt="App Logo" style="width: 10%;">
+</a>
+
+[![Download App](https://img.shields.io/badge/Download%20App-View%20Here-blue)](https://drive.google.com/file/d/1U4-5RmE0adpKsE2Zzr_8J9qtUjbSV8Gq/view)
+
 
 ## Guide
 [![Project Report](https://img.shields.io/badge/Project%20Report-View%20Here-blue.svg)](https://drive.google.com/file/d/1GElnbmjbScRVkFy4aegT1asHwaAdVAYE/view?usp=sharing)
