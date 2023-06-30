@@ -33,6 +33,8 @@ It's and android app built with kotlin. Our app is a user-friendly news applicat
 | ![About-dialog screen](https://github.com/bharath9812/News-Whiz/assets/113575759/2b445b50-eee4-4237-8994-5cb58926c8c5) | ![Notification](https://github.com/bharath9812/News-Whiz/assets/113575759/34ea3759-6434-4c9a-abf4-b8713221e4ab) | |
 
 
+## News-Whiz App Demo Video
+[![Link to](https://img.shields.io/badge/Demo%20Video-%20Here-blue.svg)](https://drive.google.com/file/d/1C-wuCdiFnyUyi5S1l9NxOsJu05KQ9I9e/view?usp=sharing)
 
 
 ## Download
@@ -40,7 +42,7 @@ It's and android app built with kotlin. Our app is a user-friendly news applicat
   <img src="app/src/main/res/drawable-v24/finale_applogo.png" alt="App Logo" style="width: 10%;">
 </a>
 
-[![Download App](https://img.shields.io/badge/Download%20App-View%20Here-blue)](https://drive.google.com/file/d/1U4-5RmE0adpKsE2Zzr_8J9qtUjbSV8Gq/view)
+[![Download App](https://img.shields.io/badge/Download%20App-%20Here-blue)](https://drive.google.com/file/d/1U4-5RmE0adpKsE2Zzr_8J9qtUjbSV8Gq/view)
 
 
 ## Guide
